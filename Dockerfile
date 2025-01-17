@@ -9,4 +9,4 @@ COPY . /app
 
 EXPOSE 7860
 
-CMD ["python", "app.py"]
+CMD ["python", "inference.py"]
