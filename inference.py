@@ -25,26 +25,21 @@ country_names = {
     'za': 'South Africa'
 }
 def predict_country(address):
-    # Tokenize the input address
     inputs = tokenizer(address, padding=True, truncation=True, return_tensors="pt")
     
-    # Set the model to evaluation mode
     model.eval()
     
-    # Perform inference
     with torch.no_grad():
         outputs = model(**inputs)
         predictions = torch.argmax(outputs.logits, dim=-1)
     
-    # Convert prediction back to country name
     predicted_country_code = label_encoder.inverse_transform(predictions.cpu().numpy())[0]
     predicted_country_name = country_names.get(predicted_country_code, "Unknown")
     
     return predicted_country_name
-# Create a Gradio interface
+
 interface = gr.Interface(fn=predict_country, 
                          inputs=gr.Textbox(label="Enter Address"), 
                          outputs=gr.Textbox(label="Predicted Country"))
 
-# Launch the interface
 interface.launch(share=True)
