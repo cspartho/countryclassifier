@@ -1,6 +1,6 @@
 # Country Classifier
 
-This project aims to classify countries using deep learning.
+A simple classification project using BERT. This project classifies a country based on a given text. It utilizes the BERT model to understand the context of the text and predict the country. The application is built using Python, Pandas, Pytorch, Huggingface, and Gradio.
 
 ## Table of Contents
 
